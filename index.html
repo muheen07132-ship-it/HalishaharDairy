@@ -406,7 +406,7 @@ footer strong { color:#fff; }
 // ===== EmailJS INIT (শুধু এটুকু যোগ হয়েছে) =====
 emailjs.init("86jTgeNbWDoHqAFLn");
 function sendTelegramNotification(orderData) {
-const token = "8862020199:AAETQl2fEkwGCiJ-qQbzxa5BwzQPxPtzJhU";
+const token = "8862020199:AAEZqxIQHyrrBBo7GP3vQ9jgwpnDYr1vnGU";
 const chatId = "8717901513";
 const text = `🛒 নতুন অর্ডার!\n\n👤 নাম: ${orderData.name}\n📞 ফোন: ${orderData.phone}\n📦 পণ্য: ${orderData.product}\n🔢 পরিমাণ: ${orderData.qty}\n💰 মোট: ${orderData.total}\n📍 ঠিকানা: ${orderData.address}\n💳 TrxID: ${orderData.txn}`;
 fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
