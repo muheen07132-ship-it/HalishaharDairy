@@ -405,6 +405,16 @@ footer strong { color:#fff; }
 <script>
 // ===== EmailJS INIT (শুধু এটুকু যোগ হয়েছে) =====
 emailjs.init("86jTgeNbWDoHqAFLn");
+function sendTelegramNotification(orderData) {
+const token = "8862020199:AAETQl2fEkwGCiJ-qQbzxa5BwzQPxPtzJhU";
+const chatId = "8717901513";
+const text = `🛒 নতুন অর্ডার!\n\n👤 নাম: ${orderData.name}\n📞 ফোন: ${orderData.phone}\n📦 পণ্য: ${orderData.product}\n🔢 পরিমাণ: ${orderData.qty}\n💰 মোট: ${orderData.total}\n📍 ঠিকানা: ${orderData.address}\n💳 TrxID: ${orderData.txn}`;
+fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+method: "POST",
+headers: {"Content-Type": "application/json"},
+body: JSON.stringify({chat_id: chatId, text: text})
+});
+}
 function sendEmailNotification(orderData) {
 emailjs.send('service_4qbqoxq', 'template_7vwnads', {
 customer_name: orderData.name,
@@ -500,6 +510,7 @@ body:JSON.stringify(orderData)
 } catch(err) { console.log('Sheet sync error',err); }
 
 // ✅ Gmail Notification
+sendTelegramNotification(orderData);
 sendEmailNotification(orderData);
 
 // Show success
